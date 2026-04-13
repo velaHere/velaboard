@@ -1,4 +1,5 @@
 <div align="center">
+<a name="top"></a>
 
 # 🎯 Scoreboard API
 
@@ -125,7 +126,7 @@ Need help? [Open an issue on GitHub](https://github.com/velaHere/velaboard/issue
 
 <div align="center">
 
-[⬆ Back to Top](#-velaboard)
+[⬆ Back to Top](#top)
 
 Made with ❤️ for Minecraft servers
 

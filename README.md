@@ -45,7 +45,7 @@ To use this library, you MUST have the Velaboard Plugin installed on your Minecr
 
 ✅ With plugin → API works perfectly
 ❌ Without plugin → Classes won't function at runtime
-Download Velaboard Plugin: [**Coming Soon**]()
+Download Velaboard Plugin: [**Coming Soon**]
 
 ---
 

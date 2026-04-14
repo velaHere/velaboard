@@ -82,8 +82,7 @@ Add this dependency to your `pom.xml`:
 |--------------------------|-------------------------------------------|
 | [**Getting Started**](https://velas.mintlify.app/introduction)        | Setup instructions and core concepts      |
 | [**API Reference**](https://velas.mintlify.app/api/scoreboard-api)            | Complete method documentation             |
-| [**Examples**]()                 | Real-world usage examples                 |
-| Contributing Guidelines  | How to contribute                         |
+| [**Examples**](https://velas.mintlify.app/coordinates-sidebar-plugin)                 | Real-world usage examples                 |
 
 ---
 

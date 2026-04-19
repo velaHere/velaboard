@@ -52,28 +52,20 @@ Download Velaboard Plugin: [**Coming Soon**]()
 ## 📥 Installation
 
 ### Maven
-
-Add this dependency to your `pom.xml`:
-
 ```xml
 <dependency>
     <groupId>io.github.velahere</groupId>
     <artifactId>velaboard</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1</version>
     <scope>provided</scope>
 </dependency>
-
-<repositories>
-    <repository>
-        <id>maven-snapshots</id>
-        <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-</repositories>
 ```
-
+### Gradle
+```gradle
+dependencies {
+    implementation("io.github.velahere:velaboard:1.0.1")
+}
+```
 ---
 
 ## 📚 Documentation
@@ -88,23 +80,14 @@ Add this dependency to your `pom.xml`:
 
 ## 🔗 Links
 
-| Resource                    | Status        |
-|-----------------------------|--------------|
-| 📦 Maven Central Repository | SNAPSHOT(Release Coming Soon)     |
-| 📚 Full Documentation       |  [**Link**](https://velas.mintlify.app/introduction)   |
-| 🎨 Spigot Resource Page     | Coming Soon   |
-| 💬 Discord Community        | [**Link**](https://discord.gg/2C63RDgVAn)   |
+| Resource                    | Status                                              |
+|-----------------------------|-----------------------------------------------------|
+| 📦 Maven Central Repository | [**Link**](https://central.sonatype.com/artifact/io.github.velahere/velaboard/overview)                                        |
+| 📚 Full Documentation       | [**Link**](https://velas.mintlify.app/introduction) |
+| 🎨 Spigot Resource Page     | Coming Soon                                         |
+| 💬 Discord Community        | [**Link**](https://discord.gg/2C63RDgVAn)           |
 
 ---
-
-## 🚨 Important Notes
-
-### 📌 Version Status
-**This is currently a SNAPSHOT build:**
-- ✅ Functional and tested  
-- ⚠️ API subject to change before `v1.0.0`  
-- 📦 Available on Maven Central Snapshots  
-
 <details>
 <summary>❓ Common Issues</summary>
 

@@ -68,7 +68,7 @@ public interface Sidebar {
      *
      * @param can true to allow viewing
      */
-    void canView(boolean can);
+    void setCanView(boolean can);
 
     /**
      * Checks if the sidebar is currently being viewed by player(s).

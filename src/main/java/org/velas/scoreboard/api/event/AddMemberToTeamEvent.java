@@ -13,7 +13,7 @@ import java.util.UUID;
  *
  * <p>This event is cancellable. Cancelling it will prevent the member from being added to the team.</p>
  */
-public class AddMemberToTeamEvent extends Event implements Cancellable {
+public final class AddMemberToTeamEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean isCancelled;

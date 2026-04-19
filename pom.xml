@@ -20,7 +20,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://opensource.org/licenses/MIT</url>
+            <url>https://velahere.github.io/velaHere.mit-license</url>
         </license>
     </licenses>
 
@@ -39,17 +39,13 @@
     </scm>
 
     <dependencies>
-
-        <!-- Spigot API for server -->
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.20.1-R0.1-SNAPSHOT</version>
-            <classifier>remapped-mojang</classifier>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.api.version}</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- JetBrains Annotations for null-safety -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -70,13 +66,11 @@
                 </configuration>
             </plugin>
 
-            <!-- Compile Java code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
 
-            <!-- Create JAR: scoreboard-api-1.0.0.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -91,7 +85,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Create source JAR: scoreboard-api-1.0.0-sources.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -105,7 +98,6 @@
                 </executions>
             </plugin>
 
-            <!-- Create javadoc JAR: scoreboard-api-1.0.0-javadoc.jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -119,7 +111,6 @@
                 </executions>
             </plugin>
 
-            <!-- GPG Signing (for Maven Central) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -135,11 +126,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!--<distributionManagement>
-        <snapshotRepository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/velaHere/velaboard</url>
-        </snapshotRepository>
-    </distributionManagement>-->
 </project>

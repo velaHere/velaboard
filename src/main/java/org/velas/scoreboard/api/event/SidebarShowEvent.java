@@ -14,7 +14,7 @@ import org.velas.scoreboard.api.sidebar.Sidebar;
  *
  * <p>This event is cancellable. Cancelling it will prevent the sidebar from being shown to the player.</p>
  */
-public class SidebarShowEvent extends Event implements Cancellable {
+public final class SidebarShowEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
     private boolean isCancelled = false;

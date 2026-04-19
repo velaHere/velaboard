@@ -34,11 +34,4 @@ public interface ScoreboardHandler {
      * @return a new Scoreboard instance
      */
     @NotNull Scoreboard createScoreboard();
-
-    /**
-     * Gets the version of Minecraft Server.
-     *
-     * @return the implementation version string
-     */
-    @NotNull String getVersion();
 }

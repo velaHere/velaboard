@@ -5,7 +5,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.velahere/velaboard?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.velahere/velaboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://velahere.github.io/velaHere.mit-license/)
-[![Minecraft](https://img.shields.io/badge/Minecraft-1.20-brightgreen)](https://www.minecraft.net/)
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.20--1.21.11-brightgreen)](https://www.minecraft.net/)
 [![GitHub](https://img.shields.io/badge/GitHub-velaHere-blue?logo=github)](https://github.com/velaHere)
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://www.java.com/)
 
@@ -24,7 +24,7 @@ Build stunning scoreboards, manage teams, and control gameplay interactions with
 - ⚡ **Simple & Clean API** — Minimal code, maximum control
 - 👤 **Player Sidebars** — Individual scoreboards per player with live updates
 - 👥 **Shared Sidebars** — One scoreboard displayed to multiple players
-- 🧠 **Advanced Team System** — Prefix, suffix, colors, visibility, and collision rules
+- 🧠 **Team System** — Prefix, suffix, colors, visibility, and collision rules
 - 🎮 **Entity Support** — Add both players and entities to teams
 - 🔥 **Flexible Damage Control** — Enable/disable friendly fire for:
   - Player ↔ Player damage
@@ -32,9 +32,8 @@ Build stunning scoreboards, manage teams, and control gameplay interactions with
   - Entity ↔ Entity damage
 - 📡 **Event-Driven Architecture** — Listen to team and scoreboard changes
 - 🔄 **Automatic Player Handling** — Built-in join/quit event management
-- 🎯 **Version Support** — Currently Compatible with Minecraft 1.20
+- 🎯 **Version Support** — Currently Compatible with Minecraft 1.20-1.21.11
 - 📦 **Lightweight & Zero Dependencies** — Only Bukkit API (except JetBrains annotations)
-- 🚀 **Production-Ready** — Tested and battle-hardened
 
 ---
 
@@ -72,7 +71,7 @@ dependencies {
 
 | Document                 | Purpose                                   |
 |--------------------------|-------------------------------------------|
-| [**Getting Started**](https://velas.mintlify.app/introduction)        | Setup instructions and core concepts      |
+| [**Getting Started**](https://velas.mintlify.app/)        | Setup instructions and core concepts      |
 | [**API Reference**](https://velas.mintlify.app/api/scoreboard-api)            | Complete method documentation             |
 | [**Examples**](https://velas.mintlify.app/coordinates-sidebar-plugin)                 | Real-world usage examples                 |
 

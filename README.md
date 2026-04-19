@@ -62,7 +62,7 @@ Download Velaboard Plugin: [**Coming Soon**]()
 ### Gradle
 ```gradle
 dependencies {
-    implementation("io.github.velahere:velaboard:1.0.1")
+    compileOnly 'io.github.velahere:velaboard:1.0.1'
 }
 ```
 ---

@@ -1,9 +1,0 @@
-target/
-.idea/
-*.iml
-.gitignore
-*pom.xml
-out/
-.classpath
-.project
-.settings/

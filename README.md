@@ -49,7 +49,9 @@ Download Velaboard Plugin: [**Coming Soon**]()
 ---
 
 ## Using Velabaord
-To use this library, first add velaboard.jar to your Java build path. Then, add Velaboard as a dependency or soft dependency to your plugin.yml file like any other plugin:
+> [!IMPORTANT]
+> - To use this library, either add the velaboard.jar (downloaded from the [releases](https://github.com/velaHere/velaboard/releases) page) to your project’s build path, or include it using Maven or Gradle.
+> - Then, add Velaboard as a dependency or soft dependency in your plugin.yml, just like any other plugin.
 ```yaml
 depend: [ Velaboard ]
 ```

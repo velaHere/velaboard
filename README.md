@@ -48,9 +48,13 @@ Download Velaboard Plugin: [**Coming Soon**]()
 
 ---
 
-## 📥 Installation
-
+## Using Velabaord
+To use this library, first add velaboard.jar to your Java build path. Then, add Velaboard as a dependency or soft dependency to your plugin.yml file like any other plugin:
+```yaml
+depend: [ Velaboard ]
+```
 ### Maven
+You can also add Velaboard as a Maven dependency:
 ```xml
 <dependency>
     <groupId>io.github.velahere</groupId>
@@ -60,7 +64,12 @@ Download Velaboard Plugin: [**Coming Soon**]()
 </dependency>
 ```
 ### Gradle
+Or use the maven dependency with gradle:
 ```gradle
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compileOnly 'io.github.velahere:velaboard:1.0.1'
 }

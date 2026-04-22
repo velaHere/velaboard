@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.velas.scoreboard.api.event.SidebarShowEvent;
 
+import java.util.UUID;
+
 /**
  * Represents a sidebar that is associated with a single {@link Player}.
  *
@@ -29,6 +31,19 @@ public interface PlayerSidebar extends Sidebar {
     void setPlayer(@NotNull Player player);
 
     /**
+     * Sets the player associated with this sidebar using their UUID.
+     * The player must be part of the same scoreboard to which this sidebar belongs.
+     *
+     * <p>This will bind the sidebar to the player represented by the given UUID even if the player with the given UUID is offline.
+     * If a player was already set, it will be replaced.</p>
+     *
+     * <p>This does not automatically show the sidebar; {@link #show()} may be required.</p>
+     *
+     * @param playerUUID the UUID of the player to associate
+     */
+    void setPlayer(@NotNull UUID playerUUID);
+
+    /**
      * Removes the currently associated player from this sidebar.
      * If the player is currently viewing the sidebar, it may also be hidden.
      * <p>After calling this, the sidebar will no longer be linked to any player.</p>
@@ -41,6 +56,13 @@ public interface PlayerSidebar extends Sidebar {
      * @return the player, or {@code null} if no player is set
      */
     @Nullable Player getPlayer();
+
+    /**
+     * Gets the UUID of the player associated with this sidebar.
+     *
+     * @return the player UUID, or {@code null} if no player is set
+     */
+    @Nullable UUID getPlayerUUID();
 
     /**
      * Shows this sidebar to the associated player with {@link SidebarShowEvent.Reason#MANUALLY} as default reason.

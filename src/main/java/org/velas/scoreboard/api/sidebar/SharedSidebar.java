@@ -106,6 +106,17 @@ public interface SharedSidebar extends Sidebar {
     void addPlayer(@NotNull Player player);
 
     /**
+     * Adds a player to this sidebar using their UUID even if they are offline.
+     * The player must be part of the same scoreboard to which this sidebar belongs.
+     *
+     * <p>This registers the player with the sidebar but does not necessarily
+     * show it immediately. Use {@link #show()} or {@link #showTo(UUID)} to display it.</p>
+     *
+     * @param playerUUID the UUID of the player to add
+     */
+    void addPlayer(@NotNull UUID playerUUID);
+
+    /**
      * Removes a player from this sidebar.
      *
      * <p>If the player is currently viewing the sidebar, it may also be hidden.</p>
@@ -113,4 +124,13 @@ public interface SharedSidebar extends Sidebar {
      * @param player the player to remove
      */
     void removePlayer(@NotNull Player player);
+
+    /**
+     * Removes a player from this sidebar even if the player is offline.
+     *
+     * <p>If the player is currently viewing the sidebar, it may also be hidden.</p>
+     *
+     * @param playerUUID the UUID of the player to remove
+     */
+    void removePlayer(@NotNull UUID playerUUID);
 }

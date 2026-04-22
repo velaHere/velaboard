@@ -6,6 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import org.velas.scoreboard.api.Scoreboard;
 import org.velas.scoreboard.api.event.AddMemberToTeamEvent;
 
+import java.util.Collection;
+import java.util.UUID;
+
 /**
  * Represents a {@link Scoreboard} team.
  *
@@ -71,15 +74,31 @@ public interface Team {
     /**
      * Enables or disables friendly fire between players in this team.
      *
-     * @param enabled true to enable friendly fire
+     * <p>When enabled, players in the same team can damage each other directly</p>
+     *
+     * <p>This setting only affects interactions between players. For entity-related
+     * interactions, see {@link #setEntitiesFriendlyFire(boolean)}.</p>
+     *
+     * @param enabled true to allow player-vs-player damage within the team
      * @return this team instance
      */
     @NotNull Team setFriendlyFire(boolean enabled);
 
     /**
-     * Enables or disables friendly fire between entities and between entities and players in this team.
+     * Enables or disables friendly fire involving non-player entities in this team.
      *
-     * @param enabled true to enable entity friendly fire
+     * <p>When enabled, damage is allowed in the following cases:</p>
+     * <ul>
+     *     <li>Entity vs entity (e.g., mob attacking another mob in the same team)</li>
+     *     <li>Player vs entity (e.g., player attacking a team entity)</li>
+     *     <li>Entity vs player (e.g., mob damaging a team player)</li>
+     * </ul>
+     *
+     *
+     * <p>This setting does not affect direct player-vs-player damage.
+     * For that, see {@link #setFriendlyFire(boolean)}.</p>
+     *
+     * @param enabled true to allow entity-related damage within the team
      * @return this team instance
      */
     @NotNull Team setEntitiesFriendlyFire(boolean enabled);
@@ -153,13 +172,16 @@ public interface Team {
     @NotNull Team addPlayer(@NotNull Player player);
 
     /**
-     * Adds a player to this team with specific reason.
-     * The player must be part of the same scoreboard to which this team belongs.
+     * Adds a player to this team using their UUID even if the player is offline.
      *
-     * @param player the player to add
+     * <p>This uses {@link AddMemberToTeamEvent.Reason#PLAYER_ADD} as the default reason.</p>
+     *
+     * <p>The player must be part of the same scoreboard to which this team belongs.</p>
+     *
+     * @param playerUUID the UUID of the player to add
      * @return this team instance
      */
-    @NotNull Team addPlayer(@NotNull Player player, @NotNull AddMemberToTeamEvent.Reason reason);
+    @NotNull Team addPlayer(@NotNull UUID playerUUID);
 
     /**
      * Removes a player from this team.
@@ -168,6 +190,24 @@ public interface Team {
      * @return this team instance
      */
     @NotNull Team removePlayer(@NotNull Player player);
+
+    /**
+     * Removes a player from this team using their UUID even if the player is offline.
+     *
+     * @param playerUUID the UUID of the player to remove
+     * @return this team instance
+     */
+    @NotNull Team removePlayer(@NotNull UUID playerUUID);
+
+    /**
+     * Adds an entity to this team using its UUID.
+     *
+     * <p>This uses {@link AddMemberToTeamEvent.Reason#ENTITY_ADD} as the default reason.</p>
+     *
+     * @param entityUUID the UUID of the entity to add
+     * @return this team instance
+     */
+    @NotNull Team addEntity(@NotNull UUID entityUUID);
 
     /**
      * Adds an entity to this team with reason {@link AddMemberToTeamEvent.Reason#ENTITY_ADD} as default.
@@ -186,6 +226,14 @@ public interface Team {
     @NotNull Team removeEntity(@NotNull Entity entity);
 
     /**
+     * Removes an entity from this team using its UUID.
+     *
+     * @param entityUUID the UUID of the entity to remove
+     * @return this team instance
+     */
+    @NotNull Team removeEntity(@NotNull UUID entityUUID);
+
+    /**
      * Checks if a player is part of this team.
      *
      * @param player the player
@@ -194,10 +242,59 @@ public interface Team {
     boolean hasPlayer(@NotNull Player player);
 
     /**
+     * Checks if a player with the given UUID is part of this team.
+     *
+     * @param playerUUID the UUID of the player
+     * @return true if the player is in the team
+     */
+    boolean hasPlayer(@NotNull UUID playerUUID);
+
+    /**
      * Checks if an entity is part of this team.
      *
      * @param entity the entity
      * @return true if the entity is in the team
      */
     boolean hasEntity(@NotNull Entity entity);
+
+    /**
+     * Checks if an entity with the given UUID is part of this team.
+     *
+     * @param entityUUID the UUID of the entity
+     * @return true if the entity is in the team
+     */
+    boolean hasEntity(@NotNull UUID entityUUID);
+
+    /**
+     * Checks if a UUID (player or entity) is part of this team.
+     *
+     * <p>This method does not distinguish between players and entities.</p>
+     *
+     * @param uuid the UUID of the member
+     * @return true if the UUID belongs to a member of this team
+     */
+    boolean hasMember(@NotNull UUID uuid);
+
+    /**
+     * Gets all player UUIDs that are part of this team.
+     *
+     * @return a collection of player UUIDs
+     */
+    @NotNull Collection<UUID> getPlayers();
+
+    /**
+     * Gets all entity UUIDs that are part of this team.
+     *
+     * @return a collection of entity UUIDs
+     */
+    @NotNull Collection<UUID> getEntities();
+
+    /**
+     * Gets all members of this team.
+     *
+     * <p>This includes both players and entities.</p>
+     *
+     * @return a collection of all member UUIDs
+     */
+    @NotNull Collection<UUID> getMembers();
 }

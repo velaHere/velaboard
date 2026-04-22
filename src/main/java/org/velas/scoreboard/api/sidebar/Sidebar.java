@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Represents a generic scoreboard sidebar.
@@ -96,6 +97,14 @@ public interface Sidebar {
      * @return true if associated
      */
     boolean hasPlayer(@NotNull Player player);
+
+    /**
+     * Checks if a player with the given UUID is associated with this sidebar.
+     *
+     * @param playerUUID the UUID of the player
+     * @return true if associated
+     */
+    boolean hasPlayer(@NotNull UUID playerUUID);
 
     /**
      * Checks if the sidebar is {@link PlayerSidebar}

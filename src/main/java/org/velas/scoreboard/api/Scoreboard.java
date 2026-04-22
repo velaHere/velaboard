@@ -45,6 +45,15 @@ public interface Scoreboard {
     void addPlayer(@NotNull Player player);
 
     /**
+     * Registers a player into this scoreboard using their UUID even if they are offline.
+     *
+     * <p>This allows the player to use teams and sidebars(of this scoreboard) managed by this API.</p>
+     *
+     * @param playerUUID the UUID of the player to add
+     */
+    void addPlayer(@NotNull UUID playerUUID);
+
+    /**
      * Removes a player from this scoreboard system.
      *
      * <p>This will also remove the player from any teams or sidebars.</p>
@@ -52,6 +61,15 @@ public interface Scoreboard {
      * @param player the player to remove
      */
     void removePlayer(@NotNull Player player);
+
+    /**
+     * Removes a player from this scoreboard system using their UUID even if they are offline.
+     *
+     * <p>This will also remove the player from any teams or sidebars.</p>
+     *
+     * @param playerUUID the UUID of the player to remove
+     */
+    void removePlayer(@NotNull UUID playerUUID);
 
     /**
      * Creates or retrieves a team with the given name.
@@ -80,12 +98,21 @@ public interface Scoreboard {
     Team getTeam(@NotNull String name);
 
     /**
-     * Gets the team a specific player belongs to.
+     * Gets the team, a specific player belongs to.
      *
      * @param player the player
      * @return the team, or null if the player is not in any team or not associated with this scoreboard.
      */
     @Nullable Team getTeamOf(@NotNull Player player);
+
+    /**
+     * Gets the team, a specific UUID(entity or player) belongs to.
+     *
+     * @param uuid the UUID of the player
+     * @return the team, or null if the player is not in any team
+     *         or not associated with this scoreboard
+     */
+    @Nullable Team getTeamOf(@NotNull UUID uuid);
 
     /**
      * Checks whether a team with the given name exists.
@@ -103,6 +130,13 @@ public interface Scoreboard {
     void removePlayerFromTeam(@NotNull Player player);
 
     /**
+     * Removes a player from their current team using their UUID even if they are offline.
+     *
+     * @param playerUUID the UUID of the player
+     */
+    void removePlayerFromTeam(@NotNull UUID playerUUID);
+
+    /**
      * Removes all teams from this scoreboard.
      */
     void clearTeams();
@@ -116,12 +150,28 @@ public interface Scoreboard {
     @Nullable PlayerSidebar getPlayerSidebar(@NotNull Player player);
 
     /**
+     * Gets the PlayerSidebar associated with a player by UUID.
+     *
+     * @param playerUUID the UUID of the player
+     * @return the player's sidebar, or null if none exists
+     */
+    @Nullable PlayerSidebar getPlayerSidebar(@NotNull UUID playerUUID);
+
+    /**
      * Gets the shared sidebar that contains the specified player.
      *
      * @param player the player
      * @return the shared sidebar containing the player, or null if none exists
      */
     @Nullable SharedSidebar getSharedSidebar(@NotNull Player player);
+
+    /**
+     * Gets the shared sidebar that contains the specified player UUID.
+     *
+     * @param playerUUID the UUID of the player
+     * @return the shared sidebar containing the player, or null if none exists
+     */
+    @Nullable SharedSidebar getSharedSidebar(@NotNull UUID playerUUID);
 
     /**
      * Gets a SharedSidebar by its unique ID.
@@ -140,6 +190,15 @@ public interface Scoreboard {
     @Nullable Sidebar getSidebar(@NotNull Player player);
 
     /**
+     * Gets any sidebar ({@link PlayerSidebar} or {@link SharedSidebar})
+     * associated with a player by UUID.
+     *
+     * @param playerUUID the UUID of the player
+     * @return the sidebar, or null if none exists
+     */
+    @Nullable Sidebar getSidebar(@NotNull UUID playerUUID);
+
+    /**
      * Checks whether a player currently has a sidebar.
      *
      * @param player the player
@@ -148,11 +207,26 @@ public interface Scoreboard {
     boolean hasSidebar(@NotNull Player player);
 
     /**
+     * Checks whether a player with the given UUID currently has a sidebar.
+     *
+     * @param playerUUID the UUID of the player
+     * @return true if the player has a sidebar
+     */
+    boolean hasSidebar(@NotNull UUID playerUUID);
+
+    /**
      * Removes a player from their current sidebar.
      *
      * @param player the player
      */
     void removePlayerFromSidebar(@NotNull Player player);
+
+    /**
+     * Removes a player from their current sidebar using their UUID even if they are offline.
+     *
+     * @param playerUUID the UUID of the player
+     */
+    void removePlayerFromSidebar(@NotNull UUID playerUUID);
 
     /**
      * Creates a new PlayerSidebar with the given title.

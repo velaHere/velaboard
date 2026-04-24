@@ -89,6 +89,7 @@ public final class SidebarShowEvent extends Event implements Cancellable {
      */
     public enum Reason{
         PLAYER_JOIN,
+        PLAYER_RESPAWN,
         MANUALLY,
         OTHER
     }

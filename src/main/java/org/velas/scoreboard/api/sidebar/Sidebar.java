@@ -58,37 +58,78 @@ public interface Sidebar {
     void clearLines();
 
     /**
-     * Checks whether this sidebar can currently be viewed.
+     * Checks whether this sidebar is allowed to be displayed.
      *
-     * @return true if viewable
+     * <p>If false, the sidebar will not be visible to players
+     * even if they are associated with it, even if {@link PlayerSidebar#show()} or {@link SharedSidebar#show()} is used.</p>
+     *
+     * @return true if the sidebar can be viewed
      */
     boolean canView();
 
     /**
-     * Sets whether this sidebar can be viewed.
+     * Sets whether this sidebar is allowed to be displayed.
      *
-     * @param can true to allow viewing
+     * <p>Disabling this will hide the sidebar from all associated player(s).</p>
+     *
+     * @param can true to allow viewing, false to hide it
      */
     void setCanView(boolean can);
 
     /**
-     * Checks if the sidebar is currently being viewed by player(s).
+     * Checks whether this sidebar is currently being displayed
+     * to at least one player.
      *
-     * @return true if being viewed
+     * @return true if at least one player is viewing this sidebar
      */
     boolean isBeingViewed();
 
     /**
-     * Permanently removes the sidebar, preventing any further use.
+     * Permanently removes this sidebar.
+     *
+     * <p>After removal, the sidebar should no longer be used,
+     * and all associated players should be detached from it.</p>
      */
     void remove();
 
     /**
-     * Checks if the sidebar has been removed.
+     * Checks whether this sidebar has been permanently removed.
      *
-     * @return true if removed
+     * @return true if the sidebar is removed and no longer usable
      */
     boolean isRemoved();
+
+    /**
+     * Checks whether this sidebar should automatically be shown
+     * to players when they join the server.
+     *
+     * @return true if the sidebar will be shown on player join
+     */
+    boolean canShowOnPlayerJoin();
+
+    /**
+     * Sets whether this sidebar should automatically be shown
+     * to players when they join the server.
+     *
+     * @param can true to enable showing on join, false to disable
+     */
+    void setCanShowOnPlayerJoin(boolean can);
+
+    /**
+     * Checks whether this sidebar should automatically be shown
+     * to players when they respawn.
+     *
+     * @return true if the sidebar will be shown on player respawn
+     */
+    boolean canShowOnPlayerRespawn();
+
+    /**
+     * Sets whether this sidebar should automatically be shown
+     * to players when they respawn.
+     *
+     * @param can true to enable showing on respawn, false to disable
+     */
+    void setCanShowOnPlayerRespawn(boolean can);
 
     /**
      * Checks if a player is associated with this sidebar.

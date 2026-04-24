@@ -9,6 +9,7 @@ import org.velas.scoreboard.api.sidebar.Sidebar;
 import org.velas.scoreboard.api.team.Team;
 
 import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -95,7 +96,7 @@ public interface Scoreboard {
      * @param name the team name
      * @return the team, or null if not found
      */
-    Team getTeam(@NotNull String name);
+    @Nullable Team getTeam(@NotNull String name);
 
     /**
      * Gets the team, a specific player belongs to.
@@ -123,6 +124,22 @@ public interface Scoreboard {
     boolean hasTeam(@NotNull String name);
 
     /**
+     * Checks whether the specified player UUID is currently assigned to any team.
+     *
+     * @param playerUUID the UUID of the player
+     * @return true if the player is in a team, false otherwise
+     */
+    boolean hasTeam(@NotNull UUID playerUUID);
+
+    /**
+     * Checks whether the specified player is currently assigned to any team.
+     *
+     * @param player the player
+     * @return true if the player is in a team, false otherwise
+     */
+    boolean hasTeam(@NotNull Player player);
+
+    /**
      * Removes a player from their current team.
      *
      * @param player the player
@@ -140,6 +157,13 @@ public interface Scoreboard {
      * Removes all teams from this scoreboard.
      */
     void clearTeams();
+
+    /**
+     * Gets all teams currently registered in this scoreboard.
+     *
+     * @return a set of all teams
+     */
+    @NotNull Set<Team> getTeams();
 
     /**
      * Gets the PlayerSidebar associated with a player.

@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.velas.scoreboard.api.event.SidebarShowEvent;
 
-import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -34,16 +34,16 @@ public interface SharedSidebar extends Sidebar {
      * <p>This includes players who are registered to this sidebar,
      * regardless of whether they are currently viewing it.</p>
      *
-     * @return a collection of player UUIDs
+     * @return a set of player UUIDs
      */
-    @NotNull Collection<UUID> getPlayers();
+    @NotNull Set<UUID> getPlayers();
 
     /**
      * Gets all players currently viewing this sidebar.
      *
-     * @return a collection of player UUIDs who are viewing the sidebar
+     * @return a set of player UUIDs who are viewing the sidebar
      */
-    @NotNull Collection<UUID> getViewers();
+    @NotNull Set<UUID> getViewers();
 
     /**
      * Shows this sidebar to all associated players with reason {@link org.velas.scoreboard.api.event.SidebarShowEvent.Reason#MANUALLY} for all.

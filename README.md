@@ -51,17 +51,18 @@ Download Velaboard Plugin: [**Coming Soon**]()
 ## Using Velabaord
 > [!IMPORTANT]
 > - To use this library, either add the velaboard.jar (downloaded from the [releases](https://github.com/velaHere/velaboard/releases) page) to your project’s build path, or include it using Maven or Gradle.
-> - Then, add Velaboard as a dependency or soft dependency in your plugin.yml, just like any other plugin.
+> - Then, add Velaboard as a dependency in your plugin.yml, just like any other plugin.
 ```yaml
 depend: [ Velaboard ]
 ```
+**\* Replace `latest` with [![Version](https://img.shields.io/maven-metadata/v.svg?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fio%2Fgithub%2Fvelahere%2Fvelaboard%2Fmaven-metadata.xml&label=&color=blue)](https://central.sonatype.com/artifact/io.github.velahere/velaboard) in dependency below.**
 ### Maven
 You can also add Velaboard as a Maven dependency:
 ```xml
 <dependency>
     <groupId>io.github.velahere</groupId>
     <artifactId>velaboard</artifactId>
-    <version>1.0.1</version>
+    <version>latest</version>
     <scope>provided</scope>
 </dependency>
 ```
@@ -73,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.github.velahere:velaboard:1.0.1'
+    compileOnly 'io.github.velahere:velaboard:latest'
 }
 ```
 ---

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.velas.scoreboard.api.Scoreboard;
 import org.velas.scoreboard.api.event.AddMemberToTeamEvent;
 
-import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -266,35 +266,49 @@ public interface Team {
     boolean hasEntity(@NotNull UUID entityUUID);
 
     /**
-     * Checks if a UUID (player or entity) is part of this team.
+     * Checks if the given UUID is part of this team, regardless of whether it
+     * represents a player or a non-player entity.
      *
-     * <p>This method does not distinguish between players and entities.</p>
+     * <p>This method does not differentiate between players and entities.
+     * If type-specific checks are required, use {@link #hasPlayer(UUID)}
+     * or {@link #hasEntity(UUID)} instead.</p>
      *
      * @param uuid the UUID of the member
-     * @return true if the UUID belongs to a member of this team
+     * @return true if the UUID belongs to any member of this team
      */
     boolean hasMember(@NotNull UUID uuid);
 
     /**
      * Gets all player UUIDs that are part of this team.
      *
-     * @return a collection of player UUIDs
+     * @return a set of player UUIDs
      */
-    @NotNull Collection<UUID> getPlayers();
+    @NotNull Set<UUID> getPlayers();
 
     /**
      * Gets all entity UUIDs that are part of this team.
      *
-     * @return a collection of entity UUIDs
+     * @return a set of entity UUIDs
      */
-    @NotNull Collection<UUID> getEntities();
+    @NotNull Set<UUID> getEntities();
 
     /**
      * Gets all members of this team.
      *
-     * <p>This includes both players and entities.</p>
+     * <p>This includes both player UUIDs and entity UUIDs.
+     * No distinction is made between the two types.</p>
      *
-     * @return a collection of all member UUIDs
+     * @return a set of all member UUIDs
      */
-    @NotNull Collection<UUID> getMembers();
+    @NotNull Set<UUID> getMembers();
+
+    /**
+     * Sends a message to all online players in this team.
+     *
+     * <p>Only players currently online will receive the message.
+     * Entity members and offline players are ignored.</p>
+     *
+     * @param message the message to send
+     */
+    void sendMessage(@NotNull String message);
 }

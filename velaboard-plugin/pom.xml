@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.velahere</groupId>
+        <artifactId>velaboard-parent</artifactId>
+        <version>1.0.4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>velaboard-plugin</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Velas Scoreboard Plugin</name>
+    <description>Server plugin - deploy to server</description>
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_20_r1</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_20_r2</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_20_r3</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_20_r4</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r1</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r2</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r3</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r4</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r5</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r6</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>v1_21_r7</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Our API module - this plugin depends on it -->
+        <dependency>
+            <groupId>io.github.velahere</groupId>
+            <artifactId>velaboard</artifactId>
+        </dependency>
+
+        <!-- Annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- Compile Java code -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!-- Create JAR: scoreboard-plugin-1.0.0.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-Vendor>Velas</Implementation-Vendor>
+                        </manifestEntries>
+                    </archive>
+                    <outputDirectory>C:\Users\dsiro\Downloads\Server\plugins</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <!--
+            Shade plugin - bundles API into this JAR
+            So it's self-contained for server deployment
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!-- ✅ THIS is for excluding your own classes -->
+                            <!--<filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                       <exclude>org/velas/scoreboard/dev/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>-->
+                            <!-- Include our API -->
+                            <artifactSet>
+                                <!--
+                                <includes>
+                                    <include>org.velas:scoreboard-api</include>
+                                </includes>
+                                -->
+                                <!-- Exclude server libraries -->
+                                <excludes>
+                                    <exclude>org.jetbrains:annotations</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <!-- Keep service loader files -->
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

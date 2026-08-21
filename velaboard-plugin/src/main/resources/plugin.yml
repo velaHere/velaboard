@@ -1,0 +1,10 @@
+name: Velaboard
+version: ${project.version}
+main: org.velas.scoreboard.plugin.ScoreboardAPIPlugin
+api-version: "1.20"
+author: Dhiren06
+description: Professional Scoreboard API for Bukkit/Spigot plugins
+
+commands:
+  st:
+    description: "Well Hello There"

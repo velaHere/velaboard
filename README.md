@@ -4,6 +4,7 @@
 # 🎯 Scoreboard API
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.velahere/velaboard?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.velahere/velaboard)
+[![Download Plugin](https://img.shields.io/badge/Download-Plugin-blue?logo=download)](https://modrinth.com/plugin/velaboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://velahere.github.io/velaHere.mit-license/)
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.20--1.21.11-brightgreen)](https://www.minecraft.net/)
 [![GitHub](https://img.shields.io/badge/GitHub-velaHere-blue?logo=github)](https://github.com/velaHere)
@@ -91,12 +92,12 @@ dependencies {
 
 ## 🔗 Links
 
-| Resource                    | Status                                              |
-|-----------------------------|-----------------------------------------------------|
-| 📦 Maven Central Repository | [**Link**](https://central.sonatype.com/artifact/io.github.velahere/velaboard/overview)                                        |
-| 📚 Full Documentation       | [**Link**](https://velas.mintlify.app/introduction) |
-| 🎨 Spigot Resource Page     | Coming Soon                                         |
-| 💬 Discord Community        | [**Link**](https://discord.gg/2C63RDgVAn)           |
+| Resource                    | Status                                                                                  |
+|-----------------------------|-----------------------------------------------------------------------------------------|
+| 📦 Maven Central Repository | [**Link**](https://central.sonatype.com/artifact/io.github.velahere/velaboard/overview) |
+| 📚 Full Documentation       | [**Link**](https://velas.mintlify.app/introduction)                                     |
+| 🎨 Download Plugin          | [**Link**](https://modrinth.com/plugin/velaboard)                                                                            |
+| 💬 Discord Community        | [**Link**](https://discord.gg/2C63RDgVAn)                                               |
 
 ---
 <details>
